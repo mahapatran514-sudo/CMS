@@ -1,13 +1,14 @@
+# Starts the API server and initializes the database
+
 from http.server import HTTPServer
-from router import clinicRouter
+from router import ClinicRouter
 from database.connection import init_database
 
-def run_server(port=8000):
+def run_server():
     init_database()
-
-    server = HTTPServer(("",port),clinicRouter)
-    print(f"🚀 Server running at http://localhost:{port}")
+    server = HTTPServer(("", 8000), ClinicRouter)
+    print("🚀 Clinic Management Server running at http://localhost:8000")
     server.serve_forever()
 
-    if __name__ == "__main__":
-        run_server()
+if __name__ == "__main__":
+    run_server()
