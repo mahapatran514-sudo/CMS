@@ -1,23 +1,19 @@
 import sqlite3
 
-DB_NAME = "clinic.db"
-
+DB_FILE = "clinic.db"
 
 def get_connection():
-    conn = sqlite3.connect(DB_NAME)
+    conn = sqlite3.connect(DB_FILE)
     conn.row_factory = sqlite3.Row
     return conn
 
-
 def init_database():
     conn = get_connection()
-    cur = conn.cursor()
 
-    # Patients table
-    cur.execute("""
+    conn.execute("""
         CREATE TABLE IF NOT EXISTS patients (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
+            name TEXT,
             age INTEGER,
             gender TEXT,
             contact TEXT,
@@ -26,30 +22,27 @@ def init_database():
         )
     """)
 
-    # Doctors table
-    cur.execute("""
+    conn.execute("""
         CREATE TABLE IF NOT EXISTS doctors (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
+            name TEXT,
             specialization TEXT,
             schedule TEXT,
-            available_days TEXT,   
+            contact TEXT,
             created_at TEXT,
             updated_at TEXT
         )
     """)
 
-    # Billing table
-    cur.execute("""
+    conn.execute("""
         CREATE TABLE IF NOT EXISTS billing (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             patient_id INTEGER,
-            doctor_id INTEGER,
+            doctor_attended TEXT,
             amount REAL,
-            payment_status TEXT,
+            bill_date TEXT,
             created_at TEXT,
-            FOREIGN KEY(patient_id) REFERENCES patients(id),
-            FOREIGN KEY(doctor_id) REFERENCES doctors(id)
+            updated_at TEXT
         )
     """)
 

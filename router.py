@@ -28,28 +28,15 @@ from controllers.billing import (
     get_all_bills,
     get_bill,
     create_bill,
+    update_bill,
+    delete_bill,
 )
-
-# -------------------------------
-# CORE UTILITIES
-# -------------------------------
 
 from core.static import serve_static
 from core.responses import send_404
 from core.middleware import add_cors_headers
 
-
-# -------------------------------
-# UI ROUTES (SPA)
-# -------------------------------
-
-FRONTEND_ROUTES = {
-    "/",
-    "/home",
-    "/patients",
-    "/doctors",
-    "/billing"
-}
+FRONTEND_ROUTES = { "/", "/home", "/patients", "/doctors", "/billing"}
 
 
 def handle_ui_routes(handler, path):
@@ -78,7 +65,7 @@ def handle_ui_routes(handler, path):
     return False
 
 
-# -------------------------------
+    # -------------------------------
 # MAIN ROUTER CLASS
 # -------------------------------
 
@@ -110,7 +97,7 @@ class ClinicRouter(BaseHTTPRequestHandler):
             patient_id = int(path.split("/")[-1])
             return get_patient(self, patient_id)
 
-        # ---------- DOCTOR API ----------
+         # ---------- DOCTOR API ----------
         if path == "/api/doctors":
             return get_all_doctors(self)
 
@@ -143,40 +130,44 @@ class ClinicRouter(BaseHTTPRequestHandler):
         if path == "/api/billing":
             return create_bill(self)
 
-        return send_404(self)
-
+     
     # ---------------------------
     # UPDATE (PUT)
     # ---------------------------
     def do_PUT(self):
-        path = urlparse(self.path).path
+        # path = urlparse(self.path).path
 
-        if path.startswith("/api/patients/"):
-            patient_id = int(path.split("/")[-1])
+        if self.path.startswith("/api/patients/"):
+            patient_id = int(self.path.split("/")[-1])
             return update_patient(self, patient_id)
 
-        if path.startswith("/api/doctors/"):
-            doctor_id = int(path.split("/")[-1])
+        if self.path.startswith("/api/doctors/"):
+            doctor_id = int(self.path.split("/")[-1])
             return update_doctor(self, doctor_id)
-
+        if self.path.startswith("/api/billing/"):
+            billing_id = int(self.path.split("/")[-1])
+            return update_bill(self, billing_id)
         return send_404(self)
-
+    
+    
     # ---------------------------
     # DELETE (DELETE)
     # ---------------------------
     def do_DELETE(self):
         path = urlparse(self.path).path
 
-        if path.startswith("/api/patients/"):
-            patient_id = int(path.split("/")[-1])
+        if self.path.startswith("/api/patients/"):
+            patient_id = int(self.path.split("/")[-1])
             return delete_patient(self, patient_id)
 
-        if path.startswith("/api/doctors/"):
-            doctor_id = int(path.split("/")[-1])
+        if self.path.startswith("/api/doctors/"):
+            doctor_id = int(self.path.split("/")[-1])
             return delete_doctor(self, doctor_id)
+        if self.path.startswith("/api/billing/"):
+            billing_id = int(self.path.split("/")[-1])
+            return delete_bill(self, billing_id)
 
         return send_404(self)
-
     # ---------------------------
     # LOGGING
     # ---------------------------
@@ -184,4 +175,5 @@ class ClinicRouter(BaseHTTPRequestHandler):
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         print(f"[{timestamp}] [ClinicServer] {format % args}")
 
+        
     
