@@ -1,11 +1,11 @@
 # A. Get All patients
-curl -X GET "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/api/patients"
+curl -X GET "https://probable-acorn-r7p45vrv54gfxpv7-8000.app.github.dev/api/patients"
 
 # B. Get One Patient
 curl -X GET "http://localhost:8000/api/patients/1"
 
 # C. Create Patient
-curl -X POST "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/api/patients" \
+curl -X POST "https://probable-acorn-r7p45vrv54gfxpv7-8000.app.github.dev/api/patients" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Alice Johnson",
@@ -15,7 +15,7 @@ curl -X POST "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/a
   }'
 
 # D. Update Patient
-curl -X PUT "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/api/patients/1" \
+curl -X PUT "https://probable-acorn-r7p45vrv54gfxpv7-8000.app.github.dev/api/patients/1" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Olivia Newman",
@@ -25,21 +25,21 @@ curl -X PUT "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/ap
   }'
 
 # E. Delete Patient
-curl -X DELETE "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/api/patients/1"
+curl -X DELETE "https://probable-acorn-r7p45vrv54gfxpv7-8000.app.github.dev/api/patients/1"
 
 #----------------------#
 #-------DOCTOR---------#
 #----------------------#
 
 # A. Get All Doctors 
-curl -X GET "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/api/doctors"
+curl -X GET "https://probable-acorn-r7p45vrv54gfxpv7-8000.app.github.dev/api/doctors"
 
 # B. Get One Doctor
 curl -X GET "http://localhost:8000/api/doctors/1"
 
 
 # C. Create Doctor
-curl -X POST "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/api/doctors" \
+curl -X POST "https://probable-acorn-r7p45vrv54gfxpv7-8000.app.github.dev/api/doctors" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Dr. Rahul Sharma",
@@ -49,7 +49,7 @@ curl -X POST "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/a
   }'
 
 # D. Update Doctor
-curl -X PUT "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/api/doctors/1" \
+curl -X PUT "https://probable-acorn-r7p45vrv54gfxpv7-8000.app.github.dev/api/doctors/1" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Dr. Rahul Sharma",
@@ -59,40 +59,40 @@ curl -X PUT "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/ap
   }'
 
 # E. Delete Doctor
-curl -X DELETE "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/api/doctors/1"
+curl -X DELETE "https://probable-acorn-r7p45vrv54gfxpv7-8000.app.github.dev/api/doctors/1"
 
 #----------------------#
 #--------bill----------#
 #----------------------#
 
 # A. Get All Bills
-curl -X GET "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/api/billing"
+curl -X GET "https://probable-acorn-r7p45vrv54gfxpv7-8000.app.github.dev/api/billing"
 
 # B. Get One Bill
 curl -X GET "http://localhost:8000/api/billing/1"
 
 # C. Create Bills
-curl -X POST "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/api/billing" \
+curl -X POST "https://probable-acorn-r7p45vrv54gfxpv7-8000.app.github.dev/api/billing" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Alice Johnson",
-    "age": 47,
-    "gender": "Female",
-    "contact": 6371404057
+    "patient_id": 1,
+    "doctor_attended": "Dr. Rahul Sharma",
+    "amount": 1500,
+    "bill_date": "2025-03-15"
   }'
 
 # D. Update Bills
-curl -X PUT "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/api/billing/1" \
+curl -X PUT "https://probable-acorn-r7p45vrv54gfxpv7-8000.app.github.dev/api/billing/1" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Olivia Newman",
-    "age": 40,
-    "gender": "Female",
-    "contact": 8762503456
+    "patient_id": 1,
+    "doctor_attended": "Neha Verma",
+    "amount": 2000,
+    "bill_date": "2025-03-15"
   }'
 
 # E. Delete Bills
-curl -X DELETE "https://upgraded-succotash-v69pqrq9jvqpfw4pp-8000.app.github.dev/api/billing/1"
+curl -X DELETE "https://probable-acorn-r7p45vrv54gfxpv7-8000.app.github.dev/api/billing/1"
 
 
 
