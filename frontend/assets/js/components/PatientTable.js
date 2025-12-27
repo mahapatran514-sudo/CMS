@@ -1,5 +1,5 @@
 import { $ } from "../utils/dom.js";
-// import { editPatient, deletePatientAction } from "../controllers/patientController.js";
+import { editPatient, deletePatientAction } from "../controllers/patientController.js";
 
 // Renders the list of patients into an HTML table
 export function renderPatientTable(patients) {
@@ -24,7 +24,7 @@ export function renderPatientTable(patients) {
   patients.forEach(patient => {
     // Create a new table row element for the current patient
     const row = document.createElement("tr");
-    row.className = "border-b"; // Add styling class (likely Tailwind CSS)
+    row.className = "border-b";
 
     // Populate the row with dynamic HTML content using a template literal
     row.innerHTML = `
@@ -34,23 +34,18 @@ export function renderPatientTable(patients) {
       <td class="px-3 py-2">${patient.gender}</td>
       <td class="px-3 py-2">${patient.contact}</td>
       <td class="px-3 py-2 flex space-x-2">
-        <!-- Buttons are created with data attributes holding the patient ID -->
         <button class="bg-yellow-400 hover:bg-yellow-500 text-black py-1 px-3 rounded"
           data-edit="${patient.id}">Edit</button>
+
         <button class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded"
           data-delete="${patient.id}">Delete</button>
       </td>
     `;
 
-    // --- Attach event listeners to the newly created buttons ---
-
-    // Find the 'Edit' button within this specific row and attach a click handler
-    // When clicked, call the editPatient function with the correct patient ID
+    // Attach event listeners to the newly created buttons
     row.querySelector("[data-edit]").onclick = () => editPatient(patient.id);
-
-    // Find the 'Delete' button within this specific row and attach a click handler
-    // When clicked, call the deletePatientAction function with the correct patient ID
     row.querySelector("[data-delete]").onclick = () => deletePatientAction(patient.id);
+
     // Append the fully constructed row to the table body
     body.appendChild(row);
   });

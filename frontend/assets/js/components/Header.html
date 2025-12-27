@@ -1,8 +1,31 @@
-<header class="bg-white shadow p-4 mb-6">
-  <nav class="flex gap-4">
-    <a href="/" data-link class="text-blue-600 hover:underline">Home</a>
-    <a href="/patients" data-link class="text-blue-600 hover:underline">Patients</a>
-    <a href="/doctors" data-link class="text-blue-600 hover:underline">Doctors</a>
-    <a href="/bills" data-link class="text-blue-600 hover:underline">Bills</a>
-  </nav>
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- Logo / Brand -->
+    <div class="flex items-center gap-2">
+      <i class="fa-solid fa-hospital text-blue-600 text-2xl"></i>
+      <span class="text-xl font-semibold text-gray-800">
+        CarePlus Clinic
+      </span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex items-center gap-6 text-sm font-medium">
+      <a href="/" data-link class="text-gray-600 hover:text-blue-600 transition">Home</a>
+      <a href="/patients" data-link class="text-gray-600 hover:text-blue-600 transition">Patients</a>
+      <a href="/doctors" data-link class="text-gray-600 hover:text-blue-600 transition">Doctors</a>
+      <a href="/billing" data-link class="text-gray-600 hover:text-blue-600 transition">Billing</a>
+      <a href="/about" data-link class="text-gray-600 hover:text-blue-600 transition">About</a>
+      <a href="/contact" data-link class="text-gray-600 hover:text-blue-600 transition">Contact</a>
+    </nav>
+
+    <!-- Action Button -->
+    <div>
+      <a href="/patients" data-link
+         class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition">
+        New Appointment
+      </a>
+    </div>
+
+  </div>
 </header>

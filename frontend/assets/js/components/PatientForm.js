@@ -6,7 +6,7 @@ export function resetForm() {
   $("patientForm").reset();
 
   // Change the submit button text back to "Add Patient"
-  $("submitBtn").textContent = "Add patient";
+  $("submitBtn").textContent = "Add Patient";
 
   // Hide the "Cancel" button, as we are no longer in 'edit' mode
   $("cancelBtn").style.display = "none";
@@ -17,8 +17,8 @@ export function fillForm(patient) {
   // Fill each input field with the corresponding property from the patient data
   $("name").value = patient.name;
   $("email").value = patient.email;
-  $("course").value = patient.course;
-  $("year").value = patient.year;
+  $("department").value = patient.department;
+  $("visitDate").value = patient.visitDate;
 
   // Change the submit button text to "Update Patient"
   $("submitBtn").textContent = "Update Patient";
