@@ -16,9 +16,9 @@ export function resetForm() {
 export function fillForm(patient) {
   // Fill each input field with the corresponding property from the patient data
   $("name").value = patient.name;
-  $("email").value = patient.email;
-  $("department").value = patient.department;
-  $("visitDate").value = patient.visitDate;
+  $("age").value = patient.age;
+  $("gender").value = patient.gender;
+  $("contact").value = patient.contact;
 
   // Change the submit button text to "Update Patient"
   $("submitBtn").textContent = "Update Patient";

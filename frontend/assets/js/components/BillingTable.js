@@ -4,7 +4,7 @@ import { editBill, deleteBillAction } from "../controllers/billingController.js"
 // Renders the list of bills into an HTML table
 export function renderBillingTable(bills) {
   // Get references to the table body where rows will be inserted and the 'no bills' message
-  const body = $("billingTableBody");
+  const body = $("billingsTableBody");
   const noBills = $("noBills");
 
   // Clear any existing rows from the table body before rendering new data

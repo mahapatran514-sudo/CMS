@@ -1,3 +1,4 @@
+console.log("✅ initDoctorController module loaded");
 import { 
     apiGetAll, 
     apiGetOne, 
@@ -6,7 +7,7 @@ import {
     apiDelete 
 } from "../services/doctorService.js";
 
-// import { showAlert } from "../components/Alert.js";
+import { showAlert } from "../components/Alert.js";
 import { renderDoctorTable } from "../components/DoctorTable.js";
 import { resetForm, fillForm } from "../components/DoctorForm.js";
 

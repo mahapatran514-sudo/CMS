@@ -1,3 +1,4 @@
+console.log("✅ initPatientController module loaded");
 import { 
     apiGetAll, 
     apiGetOne, 
@@ -6,7 +7,7 @@ import {
     apiDelete 
 } from "../services/patientService.js";
 
-// import { showAlert } from "../components/Alert.js";
+import { showAlert } from "../components/Alert.js";
 import { renderPatientTable } from "../components/PatientTable.js";
 import { resetForm, fillForm } from "../components/PatientForm.js";
 
